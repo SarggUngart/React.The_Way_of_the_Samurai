@@ -1,0 +1,25 @@
+.nav {
+  grid-area: nav;
+}
+
+.navList {
+  list-style: none;
+  padding: 0 0 0 20px;
+}
+
+.navItem {
+  margin: 10px 0;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #1f1f1f;
+
+
+  &:hover {
+    color: salmon;
+    text-decoration: underline;
+  }
+}
+
+
