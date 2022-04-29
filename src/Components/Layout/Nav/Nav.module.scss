@@ -15,11 +15,14 @@
   text-decoration: none;
   color: #1f1f1f;
 
-
   &:hover {
-    color: salmon;
     text-decoration: underline;
   }
+}
+
+.navLinkActive {
+  text-decoration: none;
+  color: salmon;
 }
 
 
