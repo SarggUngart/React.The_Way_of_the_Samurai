@@ -4,15 +4,12 @@ import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 export const Profile = () => {
+
+
   return (
     <main className={'profile'}>
-
       <ProfileInfo/>
-
-
       <MyPosts/>
-
-
     </main>
   );
 };

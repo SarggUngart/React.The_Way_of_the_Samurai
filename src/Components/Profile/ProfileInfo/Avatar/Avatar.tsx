@@ -5,7 +5,7 @@ export const Avatar = () => {
   return (
 
     <img className={styles.avatar}
-         src="https://downloader.disk.yandex.ru/preview/56611944ed31da898775a4280f9924197b0519eb71c73f511cf70b499c766408/626b0f76/Tw8aPgthf9LPeUWCux9TV8rJOwh3eRnEQVdfjXl5vB4HjUHhOCjksnUI_tkbBNu9LMxYz5O3Q3DAG_G5InItyw%3D%3D?uid=0&filename=photo_2019-03-04_21-29-07.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&tknv=v2&size=2048x2048"
+         src="https://upload.wikimedia.org/wikipedia/commons/6/66/%D0%9A._%D0%9F._%D0%91%D1%80%D1%8E%D0%BB%D0%BB%D0%BE%D0%B2._%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%9D.%D0%90._%D0%9E%D1%85%D0%BE%D1%82%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2%D0%B0_%281827_%D0%B3%D0%BE%D0%B4%29.jpg"
          alt="avatar"/>
 
   );

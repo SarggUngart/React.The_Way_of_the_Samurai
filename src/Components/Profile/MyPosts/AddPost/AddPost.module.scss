@@ -1,0 +1,33 @@
+.addPostWrapper {
+  width: 100%;
+  margin: 10px;
+}
+
+
+.textArea {
+  width: 850px;
+  height: 40px;
+  padding: 10px;
+  margin: 10px;
+  resize: none;
+}
+
+.btn {
+  margin: 0 10px;
+  padding: 8px 18px;
+  border-radius: 3px;
+  background: salmon;
+  border: none;
+  color: #f6f6f6;
+  transition: 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    background: #fd6856;
+  }
+
+  &:active {
+    transform: scale(0.98);
+    transition: none;
+  }
+}

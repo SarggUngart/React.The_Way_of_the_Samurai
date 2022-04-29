@@ -6,7 +6,6 @@ type PostPropsType = {
   likeCount: number
 }
 
-
 export const Post: FC<PostPropsType> = props => {
 
   const {

@@ -7,11 +7,11 @@ export const MyPosts = () => {
   return (
     <div className={styles.postsWrapper}>
 
-        <AddPost/>
+      <AddPost/>
 
 
-        <Post message={'hello'} likeCount={2}/>
-        <Post message={'Whats up'}likeCount={5}/>
+      <Post message={'Hello world'} likeCount={2}/>
+      <Post message={'Whats up'} likeCount={5}/>
 
     </div>
   );

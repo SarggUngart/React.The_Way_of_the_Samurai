@@ -1,22 +1,30 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./Components/Header/Header";
-import {Nav} from "./Components/Nav/Nav";
+
 import {Profile} from "./Components/Profile/Profile";
+import {Routes, Route} from "react-router-dom";
+import {Layout} from "./Components/Layout/Layout";
+import {Dialogs} from "./Components/Dialogs/Dialogs";
+import {Music} from "./Components/Music/Music";
+import {News} from "./Components/News/News";
+import {Settings} from "./Components/Settings/Settings";
+
 
 function App() {
   return (
-
     <div className="app-wrapper">
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path="/dialogs" element={<Dialogs/>}/>
+          <Route path="/news" element={<News/>}/>
+          <Route path="/music" element={<Music/>}/>
+          <Route path="/settings" element={<Settings/>}/>
 
-      <Header/>
+        </Route>
 
-      <Nav/>
-
-      <Profile/>
-
+      </Routes>
     </div>
-
   );
 }
 
