@@ -13,10 +13,12 @@ import {Settings} from "./Components/Pages/Settings/Settings";
 function App() {
   return (
     <div className="app-wrapper">
+
+
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path='profile' element={<Profile/>}/>
-          <Route path="dialogs" element={<Dialogs/>}/>
+          <Route path="dialogs/*" element={<Dialogs/>}/>
           <Route path="news" element={<News/>}/>
           <Route path="music" element={<Music/>}/>
           <Route path="settings" element={<Settings/>}/>
