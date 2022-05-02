@@ -2,7 +2,6 @@
   display: flex;
 }
 
-
 .dialogItems {
   min-width: 150px;
   padding: 10px;
@@ -15,30 +14,7 @@
 }
 
 
-.dialogList {
-  padding: 7px 10px;
-}
-
-.dialog {
-  padding: 7px 10px;
-  color: #1f1f1f;
-  text-decoration: none;
-}
-
-.active {
-  padding: 7px 10px;
-  color: salmon;
-  text-decoration: none;
-}
-
 .messages {
   padding: 10px 10px 10px 50px;
-}
-
-.message {
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
 }
 

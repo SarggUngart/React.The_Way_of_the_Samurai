@@ -7,10 +7,10 @@ export const Layout = () => {
   return (
     <>
       <Header/>
-
+      <Nav/>
       <Outlet/>
 
-      <Nav/>
+
     </>
   );
 };

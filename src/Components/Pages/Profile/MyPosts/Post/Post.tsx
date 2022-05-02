@@ -8,10 +8,7 @@ type PostPropsType = {
 
 export const Post: FC<PostPropsType> = props => {
 
-  const {
-    message,
-    likeCount
-  } = props
+  const {message, likeCount} = props
 
   return (
     <div className={styles.postWrapper}>
