@@ -14,6 +14,7 @@ export const DialogItem: FC<DialogsType> = props => {
   const path = "/dialogs/" + id
 
   return (
+
     <li className={styles.dialogList}><NavLink to={path} className={activeDialog}>{name}</NavLink></li>
   )
 }
