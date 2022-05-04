@@ -1,7 +1,16 @@
+let onChange = () => {
+  console.log('render')
+}
+
+export const subscribe = (observer: () => void) => {
+  onChange = observer
+}
+
 export type PostsType = {
   id: number
-  likeCount: number
   postText: string
+  likeCount: number
+
 }
 export type MessagesType = {
   id: number
@@ -15,6 +24,7 @@ export type DialogsType = {
 
 export type ProfilePageType = {
   posts: PostsType[]
+  newPostText: string
 }
 
 export type DialogPageType = {
@@ -31,12 +41,13 @@ export type RootStateType = {
 }
 
 
-export const state:RootStateType  = {
+export const state: RootStateType = {
   profilePage: {
     posts: [
-      {id: 1, likeCount: 2, postText: 'Hello world'},
-      {id: 2, likeCount: 5, postText: 'Whats up'}
+      {id: 1, postText: 'Hello world', likeCount: 2},
+      {id: 2, postText: 'Whats up', likeCount: 5}
     ],
+    newPostText: ''
   },
   messagesPage: {
     messages: [
@@ -56,3 +67,19 @@ export const state:RootStateType  = {
 
 }
 
+
+export const addPost = () => {
+  const newPost: PostsType = {
+    id: new Date().getTime(),
+    postText: state.profilePage.newPostText,
+    likeCount: 0
+  }
+  state.profilePage.posts.unshift(newPost)
+  state.profilePage.newPostText = ''
+  onChange()
+}
+
+export const updatePostText = (newPostText: string) => {
+  state.profilePage.newPostText = newPostText
+  onChange()
+}

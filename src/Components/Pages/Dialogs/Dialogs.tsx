@@ -12,11 +12,10 @@ type DialogsPropsType = {
 export const Dialogs: FC<DialogsPropsType> = props => {
   const {dialogsState} = props
 
-  const dialogsEl = dialogsState.dialogs.map(d => <div key={d.id}><DialogItem id={d.id} name={d.name} />
+  const dialogsEl = dialogsState.dialogs.map(d => <div key={d.id}><DialogItem id={d.id} name={d.name}/>
   </div>)
   const messagesEl = dialogsState.messages.map(m => <div key={m.id}><Messages id={m.id} messageText={m.message}/>
   </div>)
-
 
 
   return (
@@ -27,11 +26,11 @@ export const Dialogs: FC<DialogsPropsType> = props => {
         </ul>
         <div className={styles.messages}>
           {messagesEl}
-         <div>
-           <div >
-             <NewMessage/>
-           </div>
-         </div>
+          <div>
+            <div>
+              <NewMessage/>
+            </div>
+          </div>
         </div>
       </div>
     </>

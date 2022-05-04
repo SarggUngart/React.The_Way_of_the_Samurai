@@ -1,19 +1,30 @@
-import React, {createRef} from 'react';
+import React, {ChangeEvent, FC} from 'react';
 import styles from './AddPost.module.scss'
 
-export const AddPost = () => {
-  
-  const newPostEl:any = createRef()
-  
+type AddPostPropsType = {
+  addPostCallback: (message: string) => void
+  newPostTextCallBack: (newPostText: string) => void
+  message: string
+}
+
+
+export const AddPost: FC<AddPostPropsType> = props => {
+  const {addPostCallback, newPostTextCallBack, message} = props
+
+
   const addPostHandler = () => {
-      const text = newPostEl.current.value
+    // alert(newPostEl.current && newPostEl.current.value)
+    addPostCallback(message)
 
   }
-  
-  
+
+  const onChangeTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    newPostTextCallBack(e.currentTarget.value)
+  }
+
   return (
     <div className={styles.addPostWrapper}>
-      <textarea className={styles.textArea} ref={newPostEl}/>
+      <textarea value={message} onChange={onChangeTextHandler} className={styles.textArea}/>
       <button onClick={addPostHandler} className={styles.btn}>Add post</button>
     </div>
   );
