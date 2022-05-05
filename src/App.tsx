@@ -9,7 +9,6 @@ import {News} from "./Components/Pages/News/News";
 import {Settings} from "./Components/Pages/Settings/Settings";
 import {StoreType} from "./redux/state";
 
-
 export type StatePropsType = {
   store: StoreType
 }
@@ -18,9 +17,7 @@ export const App: FC<StatePropsType> = props => {
   const {store} = props
   const state = store.getState()
 
-
   return (
-
     <div className="app-wrapper">
       <Routes>
         <Route path="/" element={<Layout/>}>
@@ -38,7 +35,6 @@ export const App: FC<StatePropsType> = props => {
         </Route>
       </Routes>
     </div>
-
   );
 }
 

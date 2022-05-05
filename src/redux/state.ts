@@ -45,7 +45,6 @@ const store: StoreType = {
         this._onChange()
         break
     }
-
   },
   subscribe(observer) {
     this._onChange = observer
@@ -55,28 +54,34 @@ const store: StoreType = {
   }
 }
 
+//========= AC ======
+export const addPostAC = (postText: string) => {
+  return {
+    type: 'ADD-POST',
+    postText
+  } as const
+}
+
+export const updatePostAC = (newPostText: string) => {
+  return {
+    type: 'UPDATE-POST-TEXT',
+    newPostText
+  } as const
+}
+//========= AC ======
+
+
+//========= TYPES ======
+
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updatePostAC>
 
 export type StoreType = {
   _state: RootStateType,
   _onChange: () => void,
-  // addPost: () => void,
-  // updatePostText: (newPostText: string) => void,
   subscribe: (observer: () => void) => void,
   getState: () => RootStateType
   dispatch: (action: ActionsTypes) => void
 }
-
-type AddPostActionType = {
-  type: 'ADD-POST'
-  postText: string
-}
-
-type UpdatePostActionType = {
-  type: 'UPDATE-POST-TEXT'
-  newPostText: string
-}
-
-export type ActionsTypes = AddPostActionType | UpdatePostActionType
 
 export type PostsType = {
   id: number
@@ -110,7 +115,6 @@ export type RootStateType = {
   profilePage: ProfilePageType
   messagesPage: DialogPageType
   sidebar: SidebarPropsType
-
 }
 
 export default store
