@@ -7,16 +7,17 @@ import {Dialogs} from "./Components/Pages/Dialogs/Dialogs";
 import {Music} from "./Components/Pages/Music/Music";
 import {News} from "./Components/Pages/News/News";
 import {Settings} from "./Components/Pages/Settings/Settings";
-import {RootStateType, updatePostText} from "./redux/state";
-import {addPost} from "./redux/state";
+import {StoreType} from "./redux/state";
+
 
 export type StatePropsType = {
-  state: RootStateType
+  store: StoreType
 }
 
 export const App: FC<StatePropsType> = props => {
+  const {store} = props
+  const state = store.getState()
 
-  const {state} = props
 
   return (
 
@@ -24,16 +25,13 @@ export const App: FC<StatePropsType> = props => {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="profile" element={<Profile
-            message={props.state.profilePage.newPostText}
+            message={state.profilePage.newPostText}
             profileState={state.profilePage}
-            addPostCallback={addPost}
-            newPostTextCallBack = {updatePostText}
+            addPostCallback={store.addPost.bind(store)}
+            newPostTextCallBack={store.updatePostText.bind(store)}
           />}/>
           <Route path="dialogs/*" element={<Dialogs
             dialogsState={state.messagesPage}
-
-
-
           />}/>
           <Route path="news" element={<News/>}/>
           <Route path="music" element={<Music/>}/>

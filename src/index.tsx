@@ -2,8 +2,9 @@ import React from "react"
 import {createRoot} from "react-dom/client"
 import "./index.css"
 import App from "./App"
-import {state, subscribe} from './redux/state'
 import {BrowserRouter} from "react-router-dom";
+import store from "./redux/state";
+
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Failed to find the root element');
@@ -13,11 +14,11 @@ export const reRenderEntireTree = () => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state}/>
+        <App store={store}/>
       </BrowserRouter>
     </React.StrictMode>
   )
 }
 
-subscribe(reRenderEntireTree)
+store.subscribe(reRenderEntireTree)
 reRenderEntireTree()

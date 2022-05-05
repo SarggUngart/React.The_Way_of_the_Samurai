@@ -1,17 +1,69 @@
-let onChange = () => {
-  console.log('render')
+const store: StoreType = {
+  _state: {
+    profilePage: {
+      posts: [
+        {id: 1, postText: 'Hello world', likeCount: 2},
+        {id: 2, postText: 'Whats up', likeCount: 5}
+      ],
+      newPostText: ''
+    },
+    messagesPage: {
+      messages: [
+        {id: 1, message: 'Hello world'},
+        {id: 2, message: 'Dude, where is my car?'},
+        {id: 3, message: 'The roof is on fire'},
+        {id: 4, message: 'Ready steady go'},
+      ],
+      dialogs: [
+        {id: 1, name: 'Sergei'},
+        {id: 2, name: 'Bob'},
+        {id: 3, name: 'Andrey'},
+        {id: 4, name: 'Igor'},
+      ]
+    },
+    sidebar: {}
+
+  },
+  _onChange() {
+    console.log('render')
+  },
+  addPost() {
+    const newPost: PostsType = {
+      id: new Date().getTime(),
+      postText: this._state.profilePage.newPostText,
+      likeCount: 0
+    }
+    this._state.profilePage.posts.unshift(newPost)
+    this._state.profilePage.newPostText = ''
+    this._onChange()
+  },
+  updatePostText(newPostText: string) {
+    this._state.profilePage.newPostText = newPostText
+    this._onChange()
+  },
+  subscribe(observer) {
+    this._onChange = observer
+  },
+  getState() {
+    return this._state
+  }
 }
 
-export const subscribe = (observer: () => void) => {
-  onChange = observer
+export type StoreType = {
+  _state: RootStateType,
+  addPost: () => void,
+  _onChange: () => void,
+  updatePostText: (newPostText: string) => void,
+  subscribe: (observer: () => void) => void,
+  getState: () => RootStateType
 }
 
 export type PostsType = {
   id: number
   postText: string
   likeCount: number
-
 }
+
 export type MessagesType = {
   id: number
   message: string
@@ -38,48 +90,9 @@ export type RootStateType = {
   profilePage: ProfilePageType
   messagesPage: DialogPageType
   sidebar: SidebarPropsType
-}
-
-
-export const state: RootStateType = {
-  profilePage: {
-    posts: [
-      {id: 1, postText: 'Hello world', likeCount: 2},
-      {id: 2, postText: 'Whats up', likeCount: 5}
-    ],
-    newPostText: ''
-  },
-  messagesPage: {
-    messages: [
-      {id: 1, message: 'Hello world'},
-      {id: 2, message: 'Dude, where is my car?'},
-      {id: 3, message: 'The roof is on fire'},
-      {id: 4, message: 'Ready steady go'},
-    ],
-    dialogs: [
-      {id: 1, name: 'Sergei'},
-      {id: 2, name: 'Bob'},
-      {id: 3, name: 'Andrey'},
-      {id: 4, name: 'Igor'},
-    ]
-  },
-  sidebar: {}
 
 }
 
+export default store
 
-export const addPost = () => {
-  const newPost: PostsType = {
-    id: new Date().getTime(),
-    postText: state.profilePage.newPostText,
-    likeCount: 0
-  }
-  state.profilePage.posts.unshift(newPost)
-  state.profilePage.newPostText = ''
-  onChange()
-}
 
-export const updatePostText = (newPostText: string) => {
-  state.profilePage.newPostText = newPostText
-  onChange()
-}
