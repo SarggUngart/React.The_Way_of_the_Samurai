@@ -27,19 +27,25 @@ const store: StoreType = {
   _onChange() {
     console.log('render')
   },
-  addPost() {
-    const newPost: PostsType = {
-      id: new Date().getTime(),
-      postText: this._state.profilePage.newPostText,
-      likeCount: 0
+
+  dispatch(action) {
+    switch (action.type) {
+      case "ADD-POST":
+        const newPost: PostsType = {
+          id: new Date().getTime(),
+          postText: action.postText,
+          likeCount: 0
+        }
+        this._state.profilePage.posts.unshift(newPost)
+        this._state.profilePage.newPostText = ''
+        this._onChange();
+        break
+      case "UPDATE-POST-TEXT":
+        this._state.profilePage.newPostText = action.newPostText
+        this._onChange()
+        break
     }
-    this._state.profilePage.posts.unshift(newPost)
-    this._state.profilePage.newPostText = ''
-    this._onChange()
-  },
-  updatePostText(newPostText: string) {
-    this._state.profilePage.newPostText = newPostText
-    this._onChange()
+
   },
   subscribe(observer) {
     this._onChange = observer
@@ -49,14 +55,28 @@ const store: StoreType = {
   }
 }
 
+
 export type StoreType = {
   _state: RootStateType,
-  addPost: () => void,
   _onChange: () => void,
-  updatePostText: (newPostText: string) => void,
+  // addPost: () => void,
+  // updatePostText: (newPostText: string) => void,
   subscribe: (observer: () => void) => void,
   getState: () => RootStateType
+  dispatch: (action: ActionsTypes) => void
 }
+
+type AddPostActionType = {
+  type: 'ADD-POST'
+  postText: string
+}
+
+type UpdatePostActionType = {
+  type: 'UPDATE-POST-TEXT'
+  newPostText: string
+}
+
+export type ActionsTypes = AddPostActionType | UpdatePostActionType
 
 export type PostsType = {
   id: number

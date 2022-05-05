@@ -1,22 +1,21 @@
 import React, {FC} from 'react';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {ProfilePageType} from "../../../redux/state";
+import {ActionsTypes, ProfilePageType} from "../../../redux/state";
 
 type ProfileStateType = {
   profileState: ProfilePageType
-  addPostCallback:()=>void
-  newPostTextCallBack:(newPostText: string)=>void
   message:string
+  dispatch: (action: ActionsTypes) => void
 }
 
 export const Profile: FC<ProfileStateType> = props => {
-  const {message, profileState, addPostCallback, newPostTextCallBack} = props
+  const {message, profileState,  dispatch} = props
 
   return (
     <main className={'profile'}>
       <ProfileInfo/>
-      <MyPosts message={message} postsState={profileState.posts} addPostCallback={addPostCallback} newPostTextCallBack={newPostTextCallBack} />
+      <MyPosts message={message} postsState={profileState.posts} dispatch={dispatch} />
     </main>
   );
 };

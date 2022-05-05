@@ -26,9 +26,8 @@ export const App: FC<StatePropsType> = props => {
         <Route path="/" element={<Layout/>}>
           <Route path="profile" element={<Profile
             message={state.profilePage.newPostText}
+            dispatch={store.dispatch.bind(store)}
             profileState={state.profilePage}
-            addPostCallback={store.addPost.bind(store)}
-            newPostTextCallBack={store.updatePostText.bind(store)}
           />}/>
           <Route path="dialogs/*" element={<Dialogs
             dialogsState={state.messagesPage}
