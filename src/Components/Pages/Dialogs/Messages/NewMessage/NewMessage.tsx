@@ -10,7 +10,6 @@ type NewMessagePostType = {
 export const NewMessage: FC<NewMessagePostType> = props => {
   const {newMessage, dispatch} = props
 
-
   const addMessageHandler = () => {
     dispatch(addMessageAC(newMessage))
   }

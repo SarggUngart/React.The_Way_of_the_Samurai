@@ -1,3 +1,6 @@
+import {profileReducer} from "./profile-reducer";
+import {dialogsReducer} from "./dialogs-reducer";
+
 const store: StoreType = {
   _state: {
     profilePage: {
@@ -29,44 +32,21 @@ const store: StoreType = {
   _onChange() {
     console.log('render')
   },
-
-  dispatch(action) {
-    switch (action.type) {
-      case "ADD-POST":
-        const newPost: PostsType = {
-          id: new Date().getTime(),
-          postText: action.postText,
-          likeCount: 0
-        }
-        this._state.profilePage.posts.unshift(newPost)
-        this._state.profilePage.newPostText = ''
-        this._onChange();
-        break
-      case "UPDATE-POST-TEXT":
-        this._state.profilePage.newPostText = action.newPostText
-        this._onChange()
-        break
-      case "ADD-MESSAGE":
-        const newMessage: MessagesType = {
-          id: new Date().getTime(),
-          message: action.messageText
-        }
-        this._state.messagesPage.messages.push(newMessage)
-        this._state.messagesPage.newMessageText = ''
-        this._onChange()
-        break
-      case "UPDATE-MESSAGE-TEXT":
-        this._state.messagesPage.newMessageText = action.newMessageText
-        this._onChange()
-        break
-    }
-  },
   subscribe(observer) {
     this._onChange = observer
   },
   getState() {
     return this._state
-  }
+  },
+
+  dispatch(action) {
+
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.messagesPage = dialogsReducer(this._state.messagesPage, action)
+
+    this._onChange()
+
+  },
 }
 
 //========= AC ======
@@ -97,8 +77,6 @@ export const updateMessageAC = (newMessageText: string) => {
     newMessageText
   } as const
 }
-
-//========= AC ======
 
 
 //========= TYPES ======
