@@ -22,12 +22,14 @@ export const App: FC<StatePropsType> = props => {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="profile" element={<Profile
-            message={state.profilePage.newPostText}
+            newPost={state.profilePage.newPostText}
             dispatch={store.dispatch.bind(store)}
             profileState={state.profilePage}
           />}/>
           <Route path="dialogs/*" element={<Dialogs
             dialogsState={state.messagesPage}
+            newMessage={state.messagesPage.newMessageText}
+            dispatch={store.dispatch.bind(store)}
           />}/>
           <Route path="news" element={<News/>}/>
           <Route path="music" element={<Music/>}/>

@@ -6,12 +6,12 @@ import {ActionsTypes, PostsType} from "../../../../redux/state";
 
 type MyPostsPropsType = {
   postsState: PostsType[]
-  message:string
+  newPost:string
   dispatch: (action: ActionsTypes) => void
 }
 
 export const MyPosts: FC<MyPostsPropsType> = props => {
-  const {message, postsState, dispatch}: MyPostsPropsType = props
+  const {newPost, postsState, dispatch}: MyPostsPropsType = props
 
   const postEl = postsState.map(p => <div key={p.id}><Post message={p.postText} likeCount={p.likeCount}/>
   </div>)
@@ -19,7 +19,7 @@ export const MyPosts: FC<MyPostsPropsType> = props => {
   return (
     <div className={styles.postsWrapper}>
 
-      <AddPost message={message} dispatch={dispatch}/>
+      <AddPost newPost={newPost} dispatch={dispatch}/>
 
       {postEl}
 

@@ -14,12 +14,14 @@ const store: StoreType = {
         {id: 3, message: 'The roof is on fire'},
         {id: 4, message: 'Ready steady go'},
       ],
+      newMessageText: '',
       dialogs: [
         {id: 1, name: 'Sergei'},
         {id: 2, name: 'Bob'},
         {id: 3, name: 'Andrey'},
         {id: 4, name: 'Igor'},
-      ]
+      ],
+
     },
     sidebar: {}
 
@@ -42,6 +44,19 @@ const store: StoreType = {
         break
       case "UPDATE-POST-TEXT":
         this._state.profilePage.newPostText = action.newPostText
+        this._onChange()
+        break
+      case "ADD-MESSAGE":
+        const newMessage: MessagesType = {
+          id: new Date().getTime(),
+          message: action.messageText
+        }
+        this._state.messagesPage.messages.push(newMessage)
+        this._state.messagesPage.newMessageText = ''
+        this._onChange()
+        break
+      case "UPDATE-MESSAGE-TEXT":
+        this._state.messagesPage.newMessageText = action.newMessageText
         this._onChange()
         break
     }
@@ -68,12 +83,31 @@ export const updatePostAC = (newPostText: string) => {
     newPostText
   } as const
 }
+
+export const addMessageAC = (messageText: string) => {
+  return {
+    type: 'ADD-MESSAGE',
+    messageText
+  } as const
+}
+
+export const updateMessageAC = (newMessageText: string) => {
+  return {
+    type: 'UPDATE-MESSAGE-TEXT',
+    newMessageText
+  } as const
+}
+
 //========= AC ======
 
 
 //========= TYPES ======
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updatePostAC>
+export type ActionsTypes =
+  ReturnType<typeof addPostAC>
+  | ReturnType<typeof updatePostAC>
+  | ReturnType<typeof addMessageAC>
+  | ReturnType<typeof updateMessageAC>
 
 export type StoreType = {
   _state: RootStateType,
@@ -105,7 +139,8 @@ export type ProfilePageType = {
 }
 
 export type DialogPageType = {
-  messages: MessagesType[],
+  messages: MessagesType[]
+  newMessageText: string
   dialogs: DialogsType[]
 }
 
