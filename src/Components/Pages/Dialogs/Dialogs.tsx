@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import {Messages} from "./Messages/Messages";
 import {DialogItem} from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.scss";
-import {ActionsTypes, DialogPageType,} from "../../../redux/state";
+import {ActionsTypes, DialogPageType,} from "../../../redux/store";
 import {NewMessage} from "./Messages/NewMessage/NewMessage";
 
 type DialogsPropsType = {

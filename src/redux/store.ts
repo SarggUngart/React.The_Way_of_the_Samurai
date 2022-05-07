@@ -1,5 +1,5 @@
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
+import {addPostAC, profileReducer, updatePostAC} from "./profile-reducer";
+import {addMessageAC, dialogsReducer, updateMessageAC} from "./dialogs-reducer";
 
 const store: StoreType = {
   _state: {
@@ -48,36 +48,6 @@ const store: StoreType = {
 
   },
 }
-
-//========= AC ======
-export const addPostAC = (postText: string) => {
-  return {
-    type: 'ADD-POST',
-    postText
-  } as const
-}
-
-export const updatePostAC = (newPostText: string) => {
-  return {
-    type: 'UPDATE-POST-TEXT',
-    newPostText
-  } as const
-}
-
-export const addMessageAC = (messageText: string) => {
-  return {
-    type: 'ADD-MESSAGE',
-    messageText
-  } as const
-}
-
-export const updateMessageAC = (newMessageText: string) => {
-  return {
-    type: 'UPDATE-MESSAGE-TEXT',
-    newMessageText
-  } as const
-}
-
 
 //========= TYPES ======
 

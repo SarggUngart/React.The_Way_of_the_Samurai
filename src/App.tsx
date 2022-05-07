@@ -7,7 +7,7 @@ import {Dialogs} from "./Components/Pages/Dialogs/Dialogs";
 import {Music} from "./Components/Pages/Music/Music";
 import {News} from "./Components/Pages/News/News";
 import {Settings} from "./Components/Pages/Settings/Settings";
-import {StoreType} from "./redux/state";
+import {StoreType} from "./redux/store";
 
 export type StatePropsType = {
   store: StoreType

@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {Post} from "./Post/Post";
 import {AddPost} from "./AddPost/AddPost";
 import styles from './Myposts.module.scss'
-import {ActionsTypes, PostsType} from "../../../../redux/state";
+import {ActionsTypes, PostsType} from "../../../../redux/store";
 
 type MyPostsPropsType = {
   postsState: PostsType[]

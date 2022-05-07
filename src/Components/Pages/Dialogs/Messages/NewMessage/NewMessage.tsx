@@ -1,6 +1,7 @@
 import React, {ChangeEvent, FC} from 'react';
 import styles from "../NewMessage/NewMessage.module.scss";
-import {ActionsTypes, addMessageAC, updateMessageAC} from "../../../../../redux/state";
+import {ActionsTypes,} from "../../../../../redux/store";
+import {addMessageAC, updateMessageAC} from "../../../../../redux/dialogs-reducer";
 
 type NewMessagePostType = {
   newMessage: string
