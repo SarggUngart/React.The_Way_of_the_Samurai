@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {Post} from "./Post/Post";
-import {AddPost} from "./AddPost/AddPost";
 import styles from './Myposts.module.scss'
 import {ActionsTypes, PostsType} from "../../../../redux/store";
+import {AddPostContainer} from "./AddPost/AddPostContainer";
 
 type MyPostsPropsType = {
   postsState: PostsType[]
@@ -19,7 +19,7 @@ export const MyPosts: FC<MyPostsPropsType> = props => {
   return (
     <div className={styles.postsWrapper}>
 
-      <AddPost newPost={newPost} dispatch={dispatch}/>
+      <AddPostContainer newPost={newPost} dispatch={dispatch}/>
 
       {postEl}
 

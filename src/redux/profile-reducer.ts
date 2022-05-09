@@ -8,7 +8,6 @@ const initialState = {
   newPostText: ''
 }
 
-
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes) => {
   switch (action.type) {
     case "ADD-POST":

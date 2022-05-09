@@ -3,7 +3,7 @@ import {Messages} from "./Messages/Messages";
 import {DialogItem} from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.scss";
 import {ActionsTypes, DialogPageType,} from "../../../redux/store";
-import {NewMessage} from "./Messages/NewMessage/NewMessage";
+import {NewMessageContainer} from "./Messages/NewMessage/NewMessageContainer";
 
 type DialogsPropsType = {
   dialogsState: DialogPageType
@@ -30,7 +30,7 @@ export const Dialogs: FC<DialogsPropsType> = props => {
           {messagesEl}
           <div>
             <div>
-              <NewMessage newMessage={newMessage} dispatch={dispatch}/>
+              <NewMessageContainer newMessage={newMessage} dispatch={dispatch}/>
             </div>
           </div>
         </div>
