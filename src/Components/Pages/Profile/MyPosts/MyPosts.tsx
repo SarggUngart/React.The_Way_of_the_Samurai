@@ -11,7 +11,7 @@ type MyPostsPropsType = {
 }
 
 export const MyPosts: FC<MyPostsPropsType> = props => {
-  const {newPost, postsState, dispatch}: MyPostsPropsType = props
+  const {postsState}: MyPostsPropsType = props
 
   const postEl = postsState.map(p => <div key={p.id}><Post message={p.postText} likeCount={p.likeCount}/>
   </div>)
@@ -19,7 +19,7 @@ export const MyPosts: FC<MyPostsPropsType> = props => {
   return (
     <div className={styles.postsWrapper}>
 
-      <AddPostContainer newPost={newPost} dispatch={dispatch}/>
+      <AddPostContainer/>
 
       {postEl}
 

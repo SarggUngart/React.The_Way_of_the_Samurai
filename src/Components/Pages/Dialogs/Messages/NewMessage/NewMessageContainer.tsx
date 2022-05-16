@@ -1,27 +1,33 @@
-import React,  {FC} from 'react';
-import {ActionsTypes,} from "../../../../../redux/store";
+import React from 'react';
 import {addMessageAC, updateMessageAC} from "../../../../../redux/dialogs-reducer";
 import {NewMessage} from "./NewMessage";
+import {StoreContext} from "../../../../../StoreContext";
 
-type NewMessagePostContainerType = {
-  newMessage: string
-  dispatch: (action: ActionsTypes) => void
-}
+export const NewMessageContainer = () => {
 
-export const NewMessageContainer: FC<NewMessagePostContainerType> = props => {
-  const {newMessage, dispatch} = props
+  return (
+    <StoreContext.Consumer>
+      {
+        (store) => {
+          const state = store.getState()
 
-  const addMessageCallBack = () => {
-    dispatch(addMessageAC(newMessage))
-  }
+          const addMessageCallBack = () => {
+            store.dispatch(addMessageAC(state.messagesPage.newMessageText))
+          }
 
-  const onChangeMessageCallBack = (newMessage: string) => {
-    dispatch(updateMessageAC(newMessage))
-  }
+          const onChangeMessageCallBack = (newMessage: string) => {
+            store.dispatch(updateMessageAC(newMessage))
+          }
 
-  return <NewMessage newMessage={newMessage}
-                     addMessageCallBack={addMessageCallBack}
-                     onChangeMessageCallBack={onChangeMessageCallBack}/>
+          return <NewMessage newMessage={state.messagesPage.newMessageText}
+                             addMessageCallBack={addMessageCallBack}
+                             onChangeMessageCallBack={onChangeMessageCallBack}/>
+        }
+      }
+    </StoreContext.Consumer>
+
+
+  )
     ;
 };
 
