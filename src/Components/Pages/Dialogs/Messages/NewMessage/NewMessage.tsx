@@ -1,13 +1,10 @@
 import React, {ChangeEvent, FC} from 'react';
 import styles from "../NewMessage/NewMessage.module.scss";
+import {NewMessageType} from "./NewMessageContainer";
 
-type NewMessagePostType = {
-  newMessage:string
-  addMessageCallBack: (newMessage:string) => void
-  onChangeMessageCallBack: (newMessage:string) => void
-}
 
-export const NewMessage: FC<NewMessagePostType> = props => {
+
+export const NewMessage: FC<NewMessageType> = props => {
   const {newMessage, onChangeMessageCallBack, addMessageCallBack} = props
 
   const addMessageHandler = () => {

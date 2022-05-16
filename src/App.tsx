@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import './App.css';
 import {Profile} from "./Components/Pages/Profile/Profile";
 import {Routes, Route} from "react-router-dom";
@@ -7,14 +7,11 @@ import {Dialogs} from "./Components/Pages/Dialogs/Dialogs";
 import {Music} from "./Components/Pages/Music/Music";
 import {News} from "./Components/Pages/News/News";
 import {Settings} from "./Components/Pages/Settings/Settings";
-import {StoreType} from "./redux/store";
+import {store} from "./redux/redux-store";
 
-export type StatePropsType = {
-  store: StoreType
-}
 
-export const App: FC<StatePropsType> = props => {
-  const {store} = props
+export const App = () => {
+
   const state = store.getState()
 
   return (
