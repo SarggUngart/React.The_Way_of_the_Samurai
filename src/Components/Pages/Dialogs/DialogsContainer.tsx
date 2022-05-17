@@ -9,7 +9,7 @@ import {addMessageAC, DialogsType, MessagesType, updateMessageAC} from "../../..
 type MapStatePropsType = {
   messages: MessagesType[],
   dialogs: DialogsType[],
-  newMessage:string
+  newMessage: string
 }
 
 type MapDispatchPropsType = {
@@ -20,7 +20,7 @@ type MapDispatchPropsType = {
 export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
 
-const mapStateToProps = (state: AppStateType):MapStatePropsType => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     dialogs: state.messagesPage.dialogs,
     messages: state.messagesPage.messages,
@@ -28,7 +28,7 @@ const mapStateToProps = (state: AppStateType):MapStatePropsType => {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
   return {
     updateNewMessageText: (newMessageText: string) => {
       dispatch(updateMessageAC(newMessageText))

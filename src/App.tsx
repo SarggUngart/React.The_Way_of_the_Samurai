@@ -3,17 +3,14 @@ import './App.css';
 import {Profile} from "./Components/Pages/Profile/Profile";
 import {Routes, Route} from "react-router-dom";
 import {Layout} from "./Components/Layout/Layout";
-
 import {Music} from "./Components/Pages/Music/Music";
 import {News} from "./Components/Pages/News/News";
 import {Settings} from "./Components/Pages/Settings/Settings";
-import {store} from "./redux/redux-store";
+
 import {DialogsContainer} from "./Components/Pages/Dialogs/DialogsContainer";
 
 
 export const App = () => {
-
-  const state = store.getState()
 
   return (
     <div className="app-wrapper">

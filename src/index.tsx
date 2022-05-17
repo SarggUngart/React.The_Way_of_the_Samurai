@@ -11,7 +11,6 @@ const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Failed to find the root element');
 const root = createRoot(rootElement);
 
-// export const reRenderEntireTree = (state: AppStateType) => {
 
 root.render(
   <React.StrictMode>
@@ -22,11 +21,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 )
-// }
-//
-// store.subscribe(() => {
-//   let state = store.getState()
-//   reRenderEntireTree(state)
-// })
-//
-// reRenderEntireTree(store.getState())
