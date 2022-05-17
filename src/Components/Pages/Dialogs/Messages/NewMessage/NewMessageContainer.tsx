@@ -11,7 +11,7 @@ type MapStatePropsType = {
 
 type DialogsDispatchPropsType = {
   onChangeMessageCallBack: (newMessage: string) => void
-  addMessageCallBack: (newMessage: string) => void
+  addMessageCallBack: (newMessageText: string) => void
 }
 
 export type NewMessageType = MapStatePropsType & DialogsDispatchPropsType
@@ -27,8 +27,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DialogsDispatchPropsType => {
     onChangeMessageCallBack: (newMessage: string) => {
       dispatch(updateMessageAC(newMessage))
     },
-    addMessageCallBack: (newMessage: string) => {
-      dispatch(addMessageAC(newMessage))
+    addMessageCallBack: (newMessageText: string) => {
+      dispatch(addMessageAC(newMessageText))
     }
   }
 }

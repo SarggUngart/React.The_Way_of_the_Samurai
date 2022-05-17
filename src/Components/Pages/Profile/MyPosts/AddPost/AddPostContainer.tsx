@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {AppStateType} from "../../../../../redux/redux-store";
-import {addMessageAC, updateMessageAC} from "../../../../../redux/dialogs-reducer";
 import {AddPost} from "./AddPost";
 import {Dispatch} from "redux";
+import {addPostAC, updatePostAC} from "../../../../../redux/profile-reducer";
 
 
 type MapStatePropsType = {
@@ -11,7 +11,7 @@ type MapStatePropsType = {
 }
 
 type PostsDispatchPropsType = {
-  onChangePostTextCallBack: (newPost: string) => void
+  onChangePostTextCallBack: (newPostText: string) => void
   addPostCallBack: (newPost: string) => void
 }
 
@@ -25,11 +25,11 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 
 const mapDispatchToProps = (dispatch: Dispatch): PostsDispatchPropsType => {
   return {
-    onChangePostTextCallBack: (newPost: string) => {
-      dispatch(updateMessageAC(newPost))
+    onChangePostTextCallBack: (newPostText: string) => {
+      dispatch(updatePostAC(newPostText))
     },
     addPostCallBack: (newPost: string) => {
-      dispatch(addMessageAC(newPost))
+      dispatch(addPostAC(newPost))
     }
   }
 }

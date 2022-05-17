@@ -46,6 +46,8 @@ const store: StoreType = {
   },
 }
 
+
+
 //========= TYPES ======
 
 export type ActionsTypes =
@@ -62,18 +64,18 @@ export type StoreType = {
   dispatch: (action: ActionsTypes) => void
 }
 
-export type PostsType = {
+type PostsType = {
   id: number
   postText: string
   likeCount: number
 }
 
-export type MessagesType = {
+type MessagesType = {
   id: number
   message: string
 }
 
-export type DialogsType = {
+type DialogsType = {
   id: number
   name: string
 }

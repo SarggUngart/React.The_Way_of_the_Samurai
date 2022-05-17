@@ -1,4 +1,16 @@
-import {ActionsTypes, DialogPageType, MessagesType} from "./store";
+import {ActionsTypes} from "./store";
+
+type MessagesType = {
+  id: number
+  message: string
+}
+
+type DialogsType = {
+  id: number
+  name: string
+}
+
+export type InitialStateType = typeof initialState
 
 const initialState = {
   messages: [
@@ -6,29 +18,38 @@ const initialState = {
     {id: 2, message: 'Dude, where is my car?'},
     {id: 3, message: 'The roof is on fire'},
     {id: 4, message: 'Ready steady go'},
-  ],
+  ] as MessagesType[],
   newMessageText: '',
   dialogs: [
     {id: 1, name: 'Sergei'},
     {id: 2, name: 'Bob'},
     {id: 3, name: 'Andrey'},
     {id: 4, name: 'Igor'},
-  ],
+  ] as DialogsType[],
 }
 
-export const dialogsReducer = (state: DialogPageType = initialState, action: ActionsTypes) => {
+
+export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
-    case "ADD-MESSAGE":
+    case "ADD-MESSAGE": {
+      debugger
       const newMessage: MessagesType = {
         id: new Date().getTime(),
         message: action.messageText
       }
-      state.messages.push(newMessage)
-      state.newMessageText = ''
-      return state
-    case "UPDATE-MESSAGE-TEXT":
-      state.newMessageText = action.newMessageText
-      return state
+      const stateCopy = {...state}
+      stateCopy.messages = [...state.messages]
+      stateCopy.messages.push(newMessage)
+      stateCopy.newMessageText = ''
+      return stateCopy
+    }
+
+    case "UPDATE-MESSAGE-TEXT": {
+      const stateCopy = {...state}
+      stateCopy.newMessageText = action.newMessageText
+      return stateCopy
+    }
+
     default:
       return state
   }

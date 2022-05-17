@@ -3,8 +3,6 @@ import styles from './AddPost.module.scss'
 import {AddPostsType} from "./AddPostContainer";
 
 
-
-
 export const AddPost: FC<AddPostsType> = props => {
   const {newPostText, addPostCallBack, onChangePostTextCallBack} = props
 
