@@ -1,6 +1,11 @@
 import React, {ChangeEvent, FC} from 'react';
 import styles from './AddPost.module.scss'
-import {AddPostsType} from "./AddPostContainer";
+
+type AddPostsType = {
+  newPostText:string,
+  addPostCallBack:(newPost:string)=>void
+  onChangePostTextCallBack:(newPostText:string)=>void
+}
 
 
 export const AddPost: FC<AddPostsType> = props => {

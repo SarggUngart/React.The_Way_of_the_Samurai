@@ -13,7 +13,6 @@ const initialState = {
   posts: [
     {id: 1, postText: 'Hello world', likeCount: 2},
     {id: 2, postText: 'Whats up', likeCount: 5},
-    {id: 3, postText: 'выфвв up', likeCount: 10}
   ] as PostsType[],
   newPostText: ''
 }
@@ -27,8 +26,8 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
         postText: action.postText,
         likeCount: 0
       }
+      state.newPostText = ''
       return {...state, posts: [newPost, ...state.posts]}
-
     }
     case "UPDATE-POST-TEXT": {
       const stateCopy = {...state}

@@ -1,11 +1,11 @@
 import {ActionsTypes} from "./store";
 
-type MessagesType = {
+export type MessagesType = {
   id: number
   message: string
 }
 
-type DialogsType = {
+export type DialogsType = {
   id: number
   name: string
 }
@@ -32,16 +32,13 @@ const initialState = {
 export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
     case "ADD-MESSAGE": {
-      debugger
+
       const newMessage: MessagesType = {
         id: new Date().getTime(),
         message: action.messageText
       }
-      const stateCopy = {...state}
-      stateCopy.messages = [...state.messages]
-      stateCopy.messages.push(newMessage)
-      stateCopy.newMessageText = ''
-      return stateCopy
+      state.newMessageText = ''
+      return {...state, messages: [...state.messages, newMessage]}
     }
 
     case "UPDATE-MESSAGE-TEXT": {

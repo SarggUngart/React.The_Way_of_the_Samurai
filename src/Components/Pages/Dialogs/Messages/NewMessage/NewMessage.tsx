@@ -1,7 +1,11 @@
 import React, {ChangeEvent, FC} from 'react';
 import styles from "../NewMessage/NewMessage.module.scss";
-import {NewMessageType} from "./NewMessageContainer";
 
+type NewMessageType = {
+  newMessage: string,
+  onChangeMessageCallBack: (newMessageText: string) => void
+  addMessageCallBack: (newMessage: string) => void
+}
 
 
 export const NewMessage: FC<NewMessageType> = props => {

@@ -1,19 +1,13 @@
 import React, {FC} from 'react';
 import {Post} from "./Post/Post";
 import styles from './Myposts.module.scss'
-import {ActionsTypes} from "../../../../redux/store";
-import {AddPostContainer} from "./AddPost/AddPostContainer";
-import {PostsType} from "../../../../redux/profile-reducer";
+import {AddPost} from "./AddPost/AddPost";
+import {MyPostsPropsType} from "./MyPostsContainer";
 
-type MyPostsPropsType = {
-  postsState: PostsType[]
-  newPost: string
-  dispatch: (action: ActionsTypes) => void
-}
 
 export const MyPosts: FC<MyPostsPropsType> = props => {
-  const {postsState}: MyPostsPropsType = props
-  console.log(postsState)
+  const {postsState, newPostText, addPost, updateNewPostText}: MyPostsPropsType = props
+
   const postEl = postsState.map(p => <div key={p.id}><Post message={p.postText} likeCount={p.likeCount}/>
   </div>)
 
@@ -21,7 +15,7 @@ export const MyPosts: FC<MyPostsPropsType> = props => {
 
     <div className={styles.postsWrapper}>
 
-      <AddPostContainer/>
+      <AddPost newPostText={newPostText} addPostCallBack={addPost} onChangePostTextCallBack={updateNewPostText}/>
 
       {postEl}
 
