@@ -15,6 +15,11 @@ export const Nav = () => {
         <li className={styles.navItem}>
           <NavLink className={activeLink} to="/dialogs">Messages</NavLink>
         </li>
+
+        <li className={styles.navItem}>
+          <NavLink className={activeLink} to="/users">Users</NavLink>
+        </li>
+
         <li className={styles.navItem}>
           <NavLink className={activeLink} to="/news">News</NavLink>
         </li>

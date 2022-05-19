@@ -1,5 +1,6 @@
 import {addPostAC, profileReducer, updatePostAC} from "./profile-reducer";
 import {addMessageAC, dialogsReducer, updateMessageAC} from "./dialogs-reducer";
+import {followAC, setUsersAC, unfollowAC} from "./users-reducer";
 
 const store: StoreType = {
   _state: {
@@ -47,7 +48,6 @@ const store: StoreType = {
 }
 
 
-
 //========= TYPES ======
 
 export type ActionsTypes =
@@ -55,6 +55,9 @@ export type ActionsTypes =
   | ReturnType<typeof updatePostAC>
   | ReturnType<typeof addMessageAC>
   | ReturnType<typeof updateMessageAC>
+  | ReturnType<typeof followAC>
+  | ReturnType<typeof unfollowAC>
+  | ReturnType<typeof setUsersAC>
 
 export type StoreType = {
   _state: RootStateType,
