@@ -8,7 +8,7 @@
     display: grid;
     grid-template-rows: 70px 1fr;
     grid-template-columns:2fr 10fr;
-    gap: 10px;
+    gap: 30px;
     grid-template-areas:
             'header header header'
             'nav profile profile';

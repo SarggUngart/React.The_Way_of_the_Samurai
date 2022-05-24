@@ -1,11 +1,14 @@
 import {ActionsTypes} from "./store";
 
 export type UserType = {
+  name: string
   id: number
-  photoURL: string
-  followed: boolean
-  fullName: string
+  photos: {
+    small: null
+    large: null
+  }
   status: string
+  followed: boolean
   location: {
     city: string
     country: string
@@ -29,7 +32,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
       return {...state, users: state.users.map(u => u.id === action.userId ? {...u, followed: true} : u)}
     }
     case "SET_USERS" : {
-      return {...state, users: [...state.users, ...action.users]}
+      return {...state, users: [...action.users]}
     }
     default:
       return state

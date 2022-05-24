@@ -1,14 +1,64 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 40px;
 }
 
+.users {
+  display: flex;
+  gap: 25px
+}
+
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
 .avatar {
   display: block;
   width: 100px;
   height: 100px;
+  border-radius: 50%;
 }
 
+.userName {
+  font-size: 18px;
+  font-weight: 600;
+}
 
+.location  {
+  font-size: 12px;
+  color: grey;
+}
+
+.status {
+  font-size: 14px;
+  color: #1f1f1f;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 100px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  background: salmon;
+  border: none;
+  color: #f6f6f6;
+  transition: 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    background: #fd6856;
+  }
+
+  &:active {
+    transform: scale(0.98);
+    transition: none;
+  }
+}
