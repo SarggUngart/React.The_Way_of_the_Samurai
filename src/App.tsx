@@ -7,7 +7,8 @@ import {Music} from "./Components/Pages/Music/Music";
 import {News} from "./Components/Pages/News/News";
 import {Settings} from "./Components/Pages/Settings/Settings";
 import {DialogsContainer} from "./Components/Pages/Dialogs/DialogsContainer";
-import {UsersContainer} from "./Components/Pages/Users/UsersContainer";
+import UsersContainer from "./Components/Pages/Users/UsersContainer";
+
 
 
 export const App = () => {

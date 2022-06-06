@@ -9,10 +9,6 @@ const rootReducer = combineReducers({
   usersPage: usersReducer
 })
 
-
-
-
-
 export type AppStateType = ReturnType<typeof rootReducer>
 
 export const store = legacy_createStore(rootReducer)

@@ -1,25 +1,53 @@
-import React from 'react';
-import {UsersPropsType} from "./UsersContainer";
-import styles from './Users.module.scss'
-import axios from "axios";
-import userPhoto from '../../../assets/images/default_user_img.png'
+import React, {FC} from 'react';
+import styles from "./Users.module.scss";
+import userPhoto from "../../../assets/images/default_user_img.png";
+import {UserType} from "../../../redux/users-reducer";
 
+type UsersPropsType = {
+  users: UserType[],
+  onClickFollowHandler: (id: number) => void
+  onClickUnfollowHandler: (id: number) => void
+  selectPageHandler: (pageNumber: number) => void
+  currentPage: number
+  pageSize: number
+  totalUsersCount: null | number
+}
 
-export class Users extends React.Component<UsersPropsType> {
+const Users: FC<UsersPropsType> = props => {
+  const {
+    onClickFollowHandler, onClickUnfollowHandler, selectPageHandler, users,
+    currentPage, pageSize, totalUsersCount
+  } = props
 
-  constructor(props: UsersPropsType) {
-    super(props);
-
-    axios.get('https://social-network.samuraijs.com/api/1.0/users')
-      .then(response => {
-        props.setUsers(response.data.items)
-      })
+  let PagesCount
+  if (typeof totalUsersCount === "number") {
+    PagesCount = Math.ceil(totalUsersCount / pageSize)
   }
 
-  render() {
-    return (
+  const pages = []
+  if (PagesCount) {
+    for (let i = 1; i < PagesCount; i++) {
+      pages.push(i)
+    }
+  }
+
+  const curP = currentPage;
+  const curPF = ((curP - 5) < 0) ? 0 : curP - 5;
+  const curPL = curP + 4;
+  const slicedPages = pages.slice(curPF, curPL);
+
+  return (
+    <>
       <div className={styles.wrapper}>
-        {this.props.users.map(u =>
+        <div className={styles.pagesWrapper}>
+          {slicedPages.map(p => {
+            return (
+              <span className={`${styles.pages} ${curP === p ? styles.selectedPage : ''}`}
+                    onClick={() => selectPageHandler(p)}>{p}</span>
+            )
+          })}
+        </div>
+        {users.map(u =>
           <div className={styles.users} key={u.id}>
             <div className={styles.avatarWrapper}><img src={u.photos.small || userPhoto} className={styles.avatar}
                                                        alt="user_photo"/>
@@ -32,15 +60,15 @@ export class Users extends React.Component<UsersPropsType> {
               </div>
               <div className={styles.status}>{u.status}</div>
               <div>{u.followed
-                ? <button className={styles.btn} onClick={() => this.props.follow(u.id)}>Follow</button>
-                : <button className={styles.btn} onClick={() => this.props.unfollow(u.id)}>Unfollow</button>
+                ? <button className={styles.btn} onClick={() => onClickFollowHandler(u.id)}>Follow</button>
+                : <button className={styles.btn} onClick={() => onClickUnfollowHandler(u.id)}>Unfollow</button>
               }
               </div>
             </div>
           </div>)}
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
-
+export default Users;

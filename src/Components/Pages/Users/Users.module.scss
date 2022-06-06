@@ -32,7 +32,7 @@
   font-weight: 600;
 }
 
-.location  {
+.location {
   font-size: 12px;
   color: grey;
 }
@@ -61,4 +61,23 @@
     transform: scale(0.98);
     transition: none;
   }
+}
+
+
+.pagesWrapper {
+  text-align: center;
+}
+
+.pages {
+  display: inline-block;
+
+  margin: 0 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.selectedPage {
+  font-weight: bold;
 }
