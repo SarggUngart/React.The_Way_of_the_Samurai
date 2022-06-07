@@ -11,12 +11,13 @@ type UsersPropsType = {
   currentPage: number
   pageSize: number
   totalUsersCount: null | number
+  preloader: boolean
 }
 
 const Users: FC<UsersPropsType> = props => {
   const {
     onClickFollowHandler, onClickUnfollowHandler, selectPageHandler, users,
-    currentPage, pageSize, totalUsersCount
+    currentPage, pageSize, totalUsersCount, preloader
   } = props
 
   let PagesCount
@@ -38,7 +39,7 @@ const Users: FC<UsersPropsType> = props => {
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className={preloader ? styles.wrapperNone : styles.wrapperFlex}>
         <div className={styles.pagesWrapper}>
           {slicedPages.map(p => {
             return (

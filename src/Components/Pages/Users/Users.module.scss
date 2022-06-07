@@ -1,7 +1,11 @@
-.wrapper {
+.wrapperFlex {
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.wrapperNone{
+  display: none;
 }
 
 .users {
