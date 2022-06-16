@@ -1,12 +1,12 @@
-import {addPostAC, profileReducer, updatePostAC} from "./profile-reducer";
+import {addPost, profileReducer, ProfileType, setUserProfile, updatePost} from "./profile-reducer";
 import {addMessageAC, dialogsReducer, updateMessageAC} from "./dialogs-reducer";
 import {
-  followAC,
-  setCurrentPageAC,
-  toggleIsFetchingAC,
-  setTotalUsersCountAC,
-  setUsersAC,
-  unfollowAC
+  follow,
+  setCurrentPage,
+  toggleIsFetching,
+  setTotalUsersCount,
+  setUsers,
+  unfollow
 } from "./users-reducer";
 
 const store: StoreType = {
@@ -16,7 +16,8 @@ const store: StoreType = {
         {id: 1, postText: 'Hello world', likeCount: 2},
         {id: 2, postText: 'Whats up', likeCount: 5}
       ],
-      newPostText: ''
+      newPostText: '',
+      profile: null,
     },
     messagesPage: {
       messages: [
@@ -57,19 +58,20 @@ const store: StoreType = {
 //========= TYPES ======
 
 export type ActionsTypes =
-  ReturnType<typeof addPostAC>
-  | ReturnType<typeof updatePostAC>
+  ReturnType<typeof addPost>
+  | ReturnType<typeof updatePost>
   | ReturnType<typeof addMessageAC>
+  | ReturnType<typeof setUserProfile>
   | ReturnType<typeof updateMessageAC>
-  | ReturnType<typeof followAC>
-  | ReturnType<typeof unfollowAC>
-  | ReturnType<typeof setUsersAC>
-  | ReturnType<typeof setCurrentPageAC>
-  | ReturnType<typeof setTotalUsersCountAC>
-  | ReturnType<typeof toggleIsFetchingAC>
+  | ReturnType<typeof follow>
+  | ReturnType<typeof unfollow>
+  | ReturnType<typeof setUsers>
+  | ReturnType<typeof setCurrentPage>
+  | ReturnType<typeof setTotalUsersCount>
+  | ReturnType<typeof toggleIsFetching>
 
 
-export type StoreType = {
+type StoreType = {
   _state: RootStateType,
   _onChange: () => void,
   subscribe: (observer: () => void) => void,
@@ -93,12 +95,13 @@ type DialogsType = {
   name: string
 }
 
-export type ProfilePageType = {
+type ProfilePageType = {
   posts: PostsType[]
   newPostText: string
+  profile: null | ProfileType
 }
 
-export type DialogPageType = {
+type DialogPageType = {
   messages: MessagesType[]
   newMessageText: string
   dialogs: DialogsType[]
@@ -106,7 +109,7 @@ export type DialogPageType = {
 
 type SidebarPropsType = {}
 
-export type RootStateType = {
+type RootStateType = {
   profilePage: ProfilePageType
   messagesPage: DialogPageType
   sidebar: SidebarPropsType

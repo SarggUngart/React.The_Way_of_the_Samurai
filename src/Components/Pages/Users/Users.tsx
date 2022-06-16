@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import styles from "./Users.module.scss";
 import userPhoto from "../../../assets/images/default_user_img.png";
 import {UserType} from "../../../redux/users-reducer";
+import {NavLink} from "react-router-dom";
 
 type UsersPropsType = {
   users: UserType[],
@@ -41,17 +42,21 @@ const Users: FC<UsersPropsType> = props => {
     <>
       <div className={preloader ? styles.wrapperNone : styles.wrapperFlex}>
         <div className={styles.pagesWrapper}>
-          {slicedPages.map(p => {
+          {slicedPages.map((p,index) => {
             return (
-              <span className={`${styles.pages} ${curP === p ? styles.selectedPage : ''}`}
+              <span key={index} className={`${styles.pages} ${curP === p ? styles.selectedPage : ''}`}
                     onClick={() => selectPageHandler(p)}>{p}</span>
             )
           })}
         </div>
         {users.map(u =>
           <div className={styles.users} key={u.id}>
-            <div className={styles.avatarWrapper}><img src={u.photos.small || userPhoto} className={styles.avatar}
-                                                       alt="user_photo"/>
+            <div className={styles.avatarWrapper}>
+              <NavLink to={'./../profile/' + u.id}>
+                <img src={u.photos.small || userPhoto} className={styles.avatar}
+                     alt='user_photo'/>
+              </NavLink>
+
             </div>
             <div className={styles.infoWrapper}>
               <div className={styles.userName}>{u.name}</div>

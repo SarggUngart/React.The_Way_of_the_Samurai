@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from "../Profile.module.scss";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileDescription} from "./ProfileDescription/ProfileDescription";
+import {ProfileType} from "../../../../redux/profile-reducer";
 
-export const ProfileInfo = () => {
+type ProfileInfoPropsType = {
+  profile: ProfileType | null
+}
+
+export const ProfileInfo:FC <ProfileInfoPropsType> = props => {
+  const {profile} = props
+
   return (
     <div className={styles.infoWrapper}>
 
-      <Avatar/>
+      <Avatar profile={profile}/>
 
-      <ProfileDescription/>
+      <ProfileDescription profile={profile}/>
 
     </div>
   );
